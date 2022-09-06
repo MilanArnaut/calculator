@@ -9,6 +9,7 @@ const equalsButton = document.querySelector('#equalsButton');
 let firstValue = Number(display.innerText);
 let secondValue = 0;
 let operand = null;
+let decimalState = true;
 
 const add = (a,b) => {
     return a+b;
@@ -88,6 +89,10 @@ operatorButtons.forEach(button => {
     button.addEventListener('click', e => {
         e.preventDefault();
 
+        if(operand !== null) {
+            equals();
+            operand = null;
+        }
         display.innerText = '0';
         operand = button.innerText;
     });
@@ -96,14 +101,20 @@ operatorButtons.forEach(button => {
 equalsButton.addEventListener('click', e => {
     e.preventDefault();
 
+    equals();
+});
+
+const isNull = (operand) => {
+    return operand === null ? true : false;
+}
+
+const equals = () => {
+
     if(operand !== null) {
-        display.innerText = `${operate(firstValue, secondValue, operand)}`;
+        let number = Math.round(operate(firstValue, secondValue, operand) * 1000) / 1000
+        display.innerText = `${number}`;
         operand = null;
         firstValue = Number(display.innerText);
         secondValue = 0;
     }
-});
-
-function isNull(operand) {
-    return operand === null ? true : false;
-}
+};
