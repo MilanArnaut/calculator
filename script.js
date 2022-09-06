@@ -121,8 +121,14 @@ const isNull = (operand) => {
 const equals = () => {
 
     if(operand !== null) {
-        let number = Math.round(operate(firstValue, secondValue, operand) * 1000) / 1000
-        display.innerText = `${number}`;
+        if(operand === '/' && secondValue === 0) {
+            alert('Mathematical error! Divsion by zero is impossible!');
+            display.innerText = '0';
+        }
+        else{
+            let number = Math.round(operate(firstValue, secondValue, operand) * 1000) / 1000;
+            display.innerText = `${number}`;
+        }
         operand = null;
         firstValue = Number(display.innerText);
         secondValue = 0;
