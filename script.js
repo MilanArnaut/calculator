@@ -94,6 +94,7 @@ operatorButtons.forEach(button => {
             operand = null;
         }
         display.innerText = '0';
+        decimalState = true;
         operand = button.innerText;
     });
 });
@@ -102,6 +103,15 @@ equalsButton.addEventListener('click', e => {
     e.preventDefault();
 
     equals();
+});
+
+decimalButton.addEventListener('click', e => {
+    e.preventDefault();
+
+    if(decimalState) {
+        display.innerText += '.';
+        decimalState = false;
+    }
 });
 
 const isNull = (operand) => {
