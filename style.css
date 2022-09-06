@@ -8,6 +8,7 @@
     --grey: #2f4454;
     --pink: #da7b93;
     --green: #376e6f; 
+    --brown: #2e151b;
 }
 
 body {
@@ -37,4 +38,62 @@ footer {
     margin-top: auto;
     padding: 20px;
     font-size: 21px;
+    background-color: black;
+}
+
+.main-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.main-section .calculator {
+    width: 400px;
+    border: 2px solid black;
+    padding: 20px;
+    background-color: var(--green);
+}
+
+.main-section .calculator .display {
+    text-align: right;
+    padding: 20px 10px;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    background-color: var(--grey);
+    height: 8vh;
+    font-size: 20px;
+}
+
+.main-section .calculator .button-container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap:5px;
+    height: 40vh;
+}
+
+#clearButton {
+    grid-column: 1 / 3;
+    background-color: var(--pink);
+}
+
+#deleteButton {
+    grid-column: 3 / 5;
+    background-color: var(--pink);
+}
+
+#clearButton:active, #deleteButton:active{
+    background-color: #764753;
+}
+
+.main-section .calculator .button-container button {
+    background-color: var(--brown);
+    color: white;
+    border: 2px solid black;
+    cursor: pointer;
+    font-size: 16px;
+}
+.main-section .calculator .button-container button:active {
+    background-color: #1f0e12;
 }
